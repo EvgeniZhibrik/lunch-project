@@ -1,0 +1,19 @@
+{
+  "name": "for-lection",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "homepage": "https://github.com/EvgeniZhibrik/forLection",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular": "1.5.7",
+    "angular-route": "^1.5.7"
+  }
+}

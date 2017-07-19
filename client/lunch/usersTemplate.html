@@ -1,0 +1,42 @@
+<form novalidate name="orderForm" ng-submit="makeOrder(chosenMenu, chosenUser)">
+	<h3>Выбранное меню</h3>
+	<div class="well">
+		<span class="badge pull-right">{{chosenMenu.price}}</span>
+		{{chosenMenu.name}}
+	</div>
+
+	<div class="form-group">
+		<label for="username">Пользователь</label>
+		<input type="text" class="form-control" id="username" name="username" placeholder="Имя" ng-model="chosenUser"
+		       required>
+		<p class="error" ng-if="orderForm.$dirty && orderForm.username.$error.required">
+			Please, enter your name
+		</p>
+	</div>
+
+	<div class="form-group">
+		<label for="username">Email</label>
+		<input type="text"
+		       class="form-control"
+		       id="email"
+		       name="email"
+		       placeholder="Email"
+		       ng-model="chosenUserEmail"
+		       required
+		       ng-pattern="emailRegExp">
+		<p class="error" ng-if="orderForm.$dirty && orderForm.email.$error.required">
+			Please, enter your email
+		</p>
+		<p class="error" ng-if="orderForm.$dirty && orderForm.email.$error.pattern">
+			Invalid email
+		</p>
+	</div>
+
+	<ul class="list-group">
+		<li ng-repeat="item in users | filter:chosenUser track by $index">
+			<a class="list-group-item" ng-click="chooseUser(item)">{{item}}</a>
+		</li>
+	</ul>
+
+	<button type="submit" class="btn btn-default btn-lg" ng-disabled="!orderForm.$valid">Сделать заказ</button>
+</form>
